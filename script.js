@@ -1,26 +1,36 @@
-const input1 = document.querySelector('.js-teksts');
+const minusButton = document.querySelector('.js-minus');
 const plusButton = document.querySelector('.js-plus');
-const minusButton = doument.querySelector('.js-minus');
-const multiplyButton = document.querySelector('.js-multiply');
-const divideButton = document.querySelector('.js.divide');
-const result = document.querySelector('.js-result');
+const total = document.querySelector('.js-total');
 
-const Add = (skaitlis1, skaitlis2) => {
-    return skaitlis1 + skaitlis2
-}
+const thisMoveMinus = document.querySelector('.js-minus-this-move');
+const thisMovePlus = document.querySelector('.js-plus-this-move');
+const thisMoveTotal = document.querySelector('.js-total-this-move');
 
-const Subtract = (skaitlis1, skaitlis2) => {
-    return skaitlis1 - skaitlis2
-}
+const refreshButton = document.querySelector('.js-refresh')
 
-const Multiply = (skaitlis1, skaitlis2) => {
-    return skaitlis1 * skaitlis2
-}
-
-const Divide = (skaitlis1, skaitlis2) => {
-    return skaitlis1 / skaitlis2
-}
 
 plusButton.addEventListener('click', () => {
-    result.innerHTML = Add(Number(input1.value), Number (input2.value))
+    total.innerHTML = Number(total.innerHTML) + 1
+});
+
+minusButton.addEventListener('click', () => {
+    total.innerHTML = Number(total.innerHTML) - 1
+});
+
+thisMoveMinus.addEventListener('click', () => {
+    thisMoveTotal.innerHTML = Number(thisMoveTotal.innerHTML) - 1
+});
+
+thisMovePlus.addEventListener('click', () => {
+    thisMoveTotal.innerHTML = Number(thisMoveTotal.innerHTML) + 1
+})
+
+refreshButton.addEventListener('click', () => {
+    total.innerHTML = Number(total.innerHTML) + Number(thisMoveTotal.innerHTMl)
+    thisMoveTotal.innerHTml = "0"
+})
+
+resetButton.addEventListener('click', () => {
+    total.innerHTML = "0"
+    thisMoveTotal.innerHTML = "0"
 })
