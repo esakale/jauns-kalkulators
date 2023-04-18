@@ -1,36 +1,57 @@
-const minusButton = document.querySelector('.js-minus');
+const input1 = document.querySelector('.js-teksts1');
+const input2 = document.querySelector('.js-teksts2');
 const plusButton = document.querySelector('.js-plus');
-const total = document.querySelector('.js-total');
+const minusButton = document.querySelector('.js-minus');
+const multiplyButton = document.querySelector('.js-multiply');
+const divideButton = document.querySelector('.js-divide');
+const result = document.querySelector('.js-result');
 
-const thisMoveMinus = document.querySelector('.js-minus-this-move');
-const thisMovePlus = document.querySelector('.js-plus-this-move');
-const thisMoveTotal = document.querySelector('.js-total-this-move');
+const Add = (skaitlis1, skaitlis2) => {
+    return Number(skaitlis1) + Number(skaitlis2)
+}
 
-const refreshButton = document.querySelector('.js-refresh')
+const Subtract = (skaitlis1, skaitlis2) => {
+    return Number(skaitlis1) - Number(skaitlis2)
+}
 
+const Multiply = (skaitlis1, skaitlis2) => {
+    return Number(skaitlis1) * Number(skaitlis2)
+}
+
+const Divide = (skaitlis1, skaitlis2) => {
+    if(Number(skaitlis2) === 0){
+        alert('Nevar dalīt ar 0')
+        return 'Nav atbildes'
+    }
+
+    return Number(skaitlis1) / Number(skaitlis2)
+}
+
+const resetValues = () => {
+    input1.value = ""
+    input2.value = ""
+}
 
 plusButton.addEventListener('click', () => {
-    total.innerHTML = Number(total.innerHTML) + 1
-});
+    result.innerHTML = Add(input1.value, input2.value)
+
+    resetValues();
+})
 
 minusButton.addEventListener('click', () => {
-    total.innerHTML = Number(total.innerHTML) - 1
-});
+    result.innerHTML = Subtract(input1.value, input2.value)
 
-thisMoveMinus.addEventListener('click', () => {
-    thisMoveTotal.innerHTML = Number(thisMoveTotal.innerHTML) - 1
-});
-
-thisMovePlus.addEventListener('click', () => {
-    thisMoveTotal.innerHTML = Number(thisMoveTotal.innerHTML) + 1
+    resetValues();
 })
 
-refreshButton.addEventListener('click', () => {
-    total.innerHTML = Number(total.innerHTML) + Number(thisMoveTotal.innerHTMl)
-    thisMoveTotal.innerHTml = "0"
+multiplyButton.addEventListener('click', () => {
+    result.innerHTML = Multiply(input1.value, input2.value)
+
+    resetValues();
 })
 
-resetButton.addEventListener('click', () => {
-    total.innerHTML = "0"
-    thisMoveTotal.innerHTML = "0"
+divideButton.addEventListener('click', () => {
+    result.innerHTML = Divide(input1.value, input2.value)
+
+    resetValues();
 })
